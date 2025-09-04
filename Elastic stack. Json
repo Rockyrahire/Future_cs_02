@@ -1,0 +1,53 @@
+{
+  "trigger": {
+    "schedule": {
+      "interval": "10m"
+    }
+  },
+  "input": {
+    "search": {
+      "request": {
+        "indices": ["security-logs"],
+        "body": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "match": {
+                    "alert": "Suspicious Login Attempt"
+                  }
+                }
+              ],
+              "filter": [
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "now-10m/m"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "size": 0
+        }
+      }
+    }
+  },
+  "condition": {
+    "compare": {
+      "input.payload.hits.total.value": {
+        "gt": 10
+      }
+    }
+  },
+  "actions": {
+    "notify_email": {
+      "email": {
+        "to": ["security_team@example.com"],
+        "subject": "High Number of Failed Logins Detected",
+        "body": "There have been more than 10 failed login attempts in the last 10 minutes."
+      }
+    }
+  }
+}
