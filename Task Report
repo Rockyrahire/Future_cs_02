@@ -1,1 +1,83 @@
+Security Alert Monitoring & Incident Response Report
 
+Task Overview:
+
+You are tasked with monitoring simulated security alerts using a SIEM (Security Information and Event Management) tool, identifying suspicious activities, classifying incidents, and drafting an incident response report. The tools and skills involved include log analysis, alert triage, and incident classification.
+
+1. Incident Detection and Triage
+
+Tool Used: Elastic Stack (ELK), Splunk (Free Trial)
+
+Sample Logs Analyzed: Logs from simulated security incidents are reviewed to identify signs of compromise or unauthorized activities.
+
+Key Alerts Identified:
+
+Alert Type: Failed login attempts from suspicious IP addresses.
+
+Severity Level: High
+
+Action Taken: Alerts are categorized based on the number of failed login attempts over a defined period and flagged for further investigation.
+
+2. Incident Classification
+
+Incident Classification:
+
+Type: Potential Brute Force Attack
+
+Category: Authentication Bypass Attempt
+
+Impact Assessment: Unauthorized access attempt through brute force could lead to account compromise if successful.
+
+Risk Level: Critical
+
+3. Incident Response Actions
+
+Immediate Actions:
+
+Isolation of Affected System: The target system is temporarily isolated to prevent any further login attempts.
+
+Credential Reset: All accounts affected by failed login attempts are forced to reset passwords.
+
+IP Blocking: The suspicious IP addresses are added to a blocklist to prevent future attacks from the same source.
+
+Forensic Investigation:
+
+Log Review: A deeper dive into the logs reveals additional details about the failed login attempts, including the time, frequency, and location of the attacker.
+
+External Threat Intelligence: Correlation with threat intelligence sources indicates that the attacking IP addresses are known to be associated with brute force attacks in recent months.
+
+4. Remediation and Recommendations
+
+Short-Term Mitigations:
+
+Enable multi-factor authentication (MFA) on all critical systems.
+
+Configure the SIEM tool to trigger automated alerts for repeated failed login attempts.
+
+Implement rate limiting and account lockout policies after a specific number of failed login attempts.
+
+Long-Term Improvements:
+
+Regularly monitor logs using the Elastic Stack (ELK) or Splunk for suspicious activities.
+
+Perform a comprehensive security audit of all user accounts and permissions.
+
+Conduct security awareness training for all employees, focusing on recognizing phishing attempts and using secure passwords.
+
+5. Incident Report Deliverable
+
+The deliverable for this task includes the following:
+
+Alert Analysis: Detailed analysis of each alert triggered by the SIEM tool, with identified patterns of malicious activity.
+
+Incident Classification: Categorization of the incident based on severity and impact.
+
+Remediation Recommendations: Actions to mitigate the current risk and prevent future incidents.
+
+Timeline of Actions: A clear timeline of the steps taken from the initial detection of the alert to the final resolution.
+
+Conclusion
+
+This report outlines the steps taken to monitor, identify, classify, and respond to a security incident. By utilizing SIEM tools like Elastic Stack (ELK) and Splunk, the monitoring process was streamlined, allowing for swift detection of suspicious activities and proactive mitigation steps to secure the environment.
+
+If you need further customization or have additional data for the report, feel free to share, and I’ll help refine it further!
