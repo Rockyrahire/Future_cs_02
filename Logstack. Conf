@@ -1,0 +1,33 @@
+input {
+  file {
+    path => "/var/log/auth.log"  # Path to your log files (adjust for your setup)
+    start_position => "beginning"
+    sincedb_path => "/dev/null"  # For testing purposes, you can use a new file each time
+  }
+}
+
+filter {
+  # Example of filtering suspicious login attempts
+  if [message] =~ "Failed password" {
+    mutate { add_field => { "alert" => "Suspicious Login Attempt" } }
+  }
+
+  # You can also check for specific IP addresses or patterns
+  if [message] =~ "Invalid user" {
+    mutate { add_field => { "alert" => "Invalid User Attempt" } }
+  }
+
+  # You can add more filters to classify the logs as per your criteria
+}
+
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "security-logs"
+  }
+
+  # If you want to store logs in a file for later processing
+  file {
+    path => "/tmp/logstash_output.log"
+  }
+}
